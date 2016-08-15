@@ -1,10 +1,9 @@
-name: openchain
+name: openchain-wallet
 version: "0.6.2"
-summary: Openchain is an open source distributed ledger technology.
+summary: Openchain Wallet is an open source distributed ledger technology.
 description: >
-   Openchain is an open source distributed ledger technology.
-   It is suited for organizations wishing to issue and manage digital assets
-   in a robust, secure and scalable way.`
+   Openchain Server exposes a public HTTP API, which can be called by any program capable of making HTTP calls.
+   To wrap all those operations in a user-friendly user interface, we also provide a client: the Openchain Wallet.
 confinement: devmode
 
 apps:
@@ -17,9 +16,8 @@ parts:
     source: .
     stage-packages:
       - nginx
-      - wget
 
-  dlls:
+  www:
     plugin: dump
     source: .
     organize:
