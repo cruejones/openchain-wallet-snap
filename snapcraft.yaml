@@ -1,0 +1,28 @@
+name: openchain
+version: "0.6.2"
+summary: Openchain is an open source distributed ledger technology.
+description: >
+   Openchain is an open source distributed ledger technology.
+   It is suited for organizations wishing to issue and manage digital assets
+   in a robust, secure and scalable way.`
+confinement: devmode
+
+apps:
+  openchain-wallet:
+    command: bin/openchain-wallet
+
+parts:
+  nginx:
+    plugin: make
+    source: .
+    stage-packages:
+      - nginx
+      - wget
+
+  dlls:
+    plugin: dump
+    source: .
+    organize:
+      openchain-wallet: usr/share/dotnet/openchain-wallet/
+      openchain: bin/openchain-wallet
+    after: [nginx]
